@@ -1,0 +1,74 @@
+//---------------------------------------------//
+// Susy config (2.2.5)
+// Docs - http://outlinecss.co.uk/get-started.html#susy
+//---------------------------------------------//
+
+$susy: (
+  columns: 12,
+  gutters: .25,
+  gutter-position: split,
+  container: 100%,
+);
+
+.container {
+  padding-top: 2em;
+  @include container();
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include respond-min($tablet-wide) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+
+img {
+  margin-bottom: 2em;
+  max-width: 320px;
+  @include respond-min($tablet-wide) {
+    max-width: 380px;
+  }
+}
+.col-4 {
+  padding: 0 2em;
+    @include respond-min($tablet-wide) {
+    width: 33.333%;
+  }
+}
+.col-8 {
+  @include respond-min($tablet-wide) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 66.666%;
+    .col-4 {
+      width: 50%;
+    }
+  }
+}
+
+html {
+	background: white;
+  background-image: url(/assets/img/bg.jpg);
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  
+}
+
+body::after {
+  content: " '";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  background: rgba(255,255,255,0.6);
+  height: 100%;
+  z-index: -1;
+  @include respond-min($tablet-wide) {
+    display: none;
+  }
+}
